@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Form Handling</title>
+</head>
+<body>
+  <!-- Task 1: Read the value of a user Input and print it to the console -->
+  <input type="text" id="userInput">
+  <button onclick="readUserInput()">Read User Input</button>
+
+  <!-- Task 2: Read the value of a checkbox and print it to the console -->
+  <input type="checkbox" id="checkbox"> Check this box
+  <button onclick="readCheckbox()">Read Checkbox</button>
+
+  <!-- Task 3: Read the value of a select box and print it to the console -->
+  <select id="selectBox">
+    <option value="option1">Option 1</option>
+    <option value="option2">Option 2</option>
+    <option value="option3">Option 3</option>
+  </select>
+  <button onclick="readSelectBox()">Read Select Box</button>
+
+  <!-- Task 4: Place some text in a field with a custom id -->
+  <input type="text" id="customField">
+  <button onclick="placeTextInField()">Place Text in Field</button>
+
+  <!-- Task 5: Ask the user about Martial Status and set the "status" field -->
+  <input type="text" id="status">
+  <button onclick="setStatus()">Set Martial Status</button>
+
+  <!-- Task 6: If an input is empty, fill it with a string -->
+  <input type="text" id="emptyInput" value="">
+  <button onclick="fillEmptyInput()">Fill Empty Input</button>
+
+  <!-- Task 7: Registration Form with Validation -->
+  <form id="registrationForm" onsubmit="return validateForm()">
+    <label for="fullName">Full Name:</label>
+    <input type="text" id="fullName" required><br><br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" required><br><br>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" required><br><br>
+
+    <label for="confirmPassword">Confirm Password:</label>
+    <input type="password" id="confirmPassword" required><br><br>
+
+    <input type="submit" value="Register">
+  </form>
+
+  <script>
+    // Task 1: Read the value of a user Input and print it to the console
+    function readUserInput() {
+      const userInput = document.getElementById("userInput").value;
+      console.log("User Input:", userInput);
+    }
+
+    // Task 2: Read the value of a checkbox and print it to the console
+    function readCheckbox() {
+      const checkbox = document.getElementById("checkbox");
+      const isChecked = checkbox.checked;
+      console.log("Checkbox Checked:", isChecked);
+    }
+
+    // Task 3: Read the value of a select box and print it to the console
+    function readSelectBox() {
+      const selectBox = document.getElementById("selectBox");
+      const selectedValue = selectBox.value;
+      console.log("Selected Value:", selectedValue);
+    }
+
+    // Task 4: Place some text in a field with a custom id
+    function placeTextInField() {
+      document.getElementById("customField").value = "Custom Text";
+    }
+
+    // Task 5: Set the "status" field based on Martial Status
+    function setStatus() {
+      const married = confirm("Are you married?");
+      const statusField = document.getElementById("status");
+      statusField.value = married ? "Married" : "Available";
+    }
+
+    // Task 6: If an input is empty, fill it with a string
+    function fillEmptyInput() {
+      const emptyInput = document.getElementById("emptyInput");
+      if (emptyInput.value.trim() === "") {
+        emptyInput.value = "Filled";
+      }
+    }
+
+    // Task 7: Validation function for the Registration Form
+    function validateForm() {
+      const fullName = document.getElementById("fullName").value;
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      const confirmPassword = document.getElementById("confirmPassword").value;
+
+      if (password !== confirmPassword) {
+        alert("Passwords do not match.");
+        return false;
+      }
+
+      if (password.length < 6) {
+        alert("Password must be at least 6 characters.");
+        return false;
+      }
+
+      console.log("Registration Form Submitted:");
+      console.log("Full Name:", fullName);
+      console.log("Email:", email);
+      return true;
+    }
+  </script>
+</body>
+</html>

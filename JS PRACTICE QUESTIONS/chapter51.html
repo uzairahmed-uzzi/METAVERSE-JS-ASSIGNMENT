@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Paragraph Manipulation</title>
+</head>
+<body>
+  <!-- Task 1: Expand a paragraph when the user clicks on "Show More" -->
+  <p id="expandParagraph">
+    This is a short paragraph. <span id="moreText" style="display: none;">Here is some additional text that appears when you click "Show More."</span>
+    <a href="javascript:void(0);" onclick="expandParagraph()">Show More</a>
+  </p>
+
+  <!-- Task 2: Read the text of a paragraph and search for a specific word or phrase -->
+  <p id="searchParagraph">This is an example paragraph with some specific words like apple and orange.</p>
+  <input type="text" id="searchInput" placeholder="Enter word to search">
+  <button onclick="searchText()">Search</button>
+  <div id="searchResult"></div>
+
+  <!-- Task 3: Read the text of a paragraph and find the longest word -->
+  <p id="longestWordParagraph">This paragraph contains some long words like elephant, hippopotamus, and antidisestablishmentarianism.</p>
+  <button onclick="findLongestWord()">Find Longest Word</button>
+  <div id="longestWordResult"></div>
+
+  <!-- Task 4: Set the text of a paragraph to the value of a text field if not empty -->
+  <p id="setTextParagraph">This paragraph will be updated with the text from the input field.</p>
+  <input type="text" id="setTextInput" placeholder="Enter text">
+  <button onclick="setTextFromInput()">Set Text</button>
+
+  <!-- Task 5: Set the text of a paragraph to the value of a text field if it matches a specific word -->
+  <p id="specificWordParagraph">This paragraph will only update if you enter the word "update" in the input field.</p>
+  <input type="text" id="specificWordInput" placeholder="Enter 'update'">
+  <button onclick="setTextIfSpecificWord()">Set Text If 'update'</button>
+
+  <!-- Task 6: Set the text of a paragraph to the value of a text field if it's less than a certain length -->
+  <p id="lengthLimitParagraph">This paragraph has a maximum length limit.</p>
+  <input type="text" id="lengthLimitInput" placeholder="Enter text (max 10 characters)">
+  <button onclick="setTextIfLessThanLength()">Set Text If Less Than 10 Characters</button>
+
+  <script>
+    // Task 1: Expand a paragraph when the user clicks on "Show More"
+    function expandParagraph() {
+      const moreText = document.getElementById("moreText");
+      if (moreText.style.display === "none") {
+        moreText.style.display = "inline";
+        document.querySelector('a').innerHTML = "Show Less";
+      } else {
+        moreText.style.display = "none";
+        document.querySelector('a').innerHTML = "Show More";
+      }
+    }
+
+    // Task 2: Read the text of a paragraph and search for a specific word or phrase
+    function searchText() {
+      const paragraphText = document.getElementById("searchParagraph").textContent;
+      const searchTerm = document.getElementById("searchInput").value;
+      const searchResult = document.getElementById("searchResult");
+
+      if (paragraphText.includes(searchTerm)) {
+        searchResult.textContent = `"${searchTerm}" found in the paragraph.`;
+      } else {
+        searchResult.textContent = `"${searchTerm}" not found in the paragraph.`;
+      }
+    }
+
+    // Task 3: Read the text of a paragraph and find the longest word
+    function findLongestWord() {
+      const paragraphText = document.getElementById("longestWordParagraph").textContent;
+      const words = paragraphText.split(/\s+/);
+      let longestWord = "";
+
+      for (const word of words) {
+        if (word.length > longestWord.length) {
+          longestWord = word;
+        }
+      }
+
+      document.getElementById("longestWordResult").textContent = `Longest word: ${longestWord}`;
+    }
+
+    // Task 4: Set the text of a paragraph to the value of a text field if not empty
+    function setTextFromInput() {
+      const inputText = document.getElementById("setTextInput").value;
+      const paragraph = document.getElementById("setTextParagraph");
+
+      if (inputText.trim() !== "") {
+        paragraph.textContent = inputText;
+      }
+    }
+
+    // Task 5: Set the text of a paragraph to the value of a text field if it matches a specific word
+    function setTextIfSpecificWord() {
+      const inputText = document.getElementById("specificWordInput").value;
+      const paragraph = document.getElementById("specificWordParagraph");
+
+      if (inputText.toLowerCase() === "update") {
+        paragraph.textContent = inputText;
+      }
+    }
+
+    // Task 6: Set the text of a paragraph to the value of a text field if it's less than a certain length
+    function setTextIfLessThanLength() {
+      const inputText = document.getElementById("lengthLimitInput").value;
+      const paragraph = document.getElementById("lengthLimitParagraph");
+
+      if (inputText.length <= 10) {
+        paragraph.textContent = inputText;
+      }
+    }
+  </script>
+</body>
+</html>

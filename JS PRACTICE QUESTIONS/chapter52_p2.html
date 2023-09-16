@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Image Swapping</title>
+</head>
+<body>
+  <img id="image" src="image1.jpg" alt="Image 1" width="200" height="150">
+  <button onclick="swapImage()">Swap Image</button>
+
+  <script>
+    let isImage1 = true; // Variable to track the current image
+
+    // Function to swap the image when the button is clicked
+    function swapImage() {
+      const image = document.getElementById("image");
+
+      // Toggle between two image sources
+      if (isImage1) {
+        image.src = "image2.png";
+      } else {
+        image.src = "image1.jpg";
+      }
+
+      // Toggle the variable to track the current image
+      isImage1 = !isImage1;
+    }
+  </script>
+</body>
+</html>

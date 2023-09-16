@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Event Handling</title>
+  <style>
+    /* Add styles for Task 8 - Hover Change Color Button */
+    #hoverChangeColorButton {
+      background-color: lightblue;
+      transition: background-color 0.3s;
+    }
+    #hoverChangeColorButton:hover {
+      background-color: lightgreen;
+    }
+  </style>
+</head>
+<body>
+  <!-- Task 1: Print a message when the user clicks on an element -->
+  <div id="clickableElement" onclick="printMessage()">Click me to print a message!</div>
+
+  <!-- Task 2: Hide an element when the user clicks on a different element -->
+  <div id="hideMe" onclick="hideElement()">Click to hide this element</div>
+  <div id="hiddenElement">This element will be hidden</div>
+
+  <!-- Task 3: Change link color on hover -->
+  <a id="colorChangeLink" onmouseover="changeColor()" onmouseout="restoreColor()">Hover me to change color</a>
+
+  <!-- Task 4: Scroll to the top of the page -->
+  <a id="scrollToTopLink" href="javascript:void(0);" onclick="scrollToTop()">Scroll to Top</a>
+
+  <!-- Task 5: Play a sound on link click -->
+  <a id="playSoundLink" href="javascript:void(0);" onclick="playSound()">Play Sound</a>
+
+  <!-- Task 6: Open a new window -->
+  <a id="openNewWindowLink" href="javascript:void(0);" onclick="openNewWindow()">Open New Window</a>
+
+  <!-- Task 7: Simple button that alerts a message -->
+  <button id="alertButton" onclick="showAlert()">Click me to alert a message</button>
+
+  <!-- Task 8: Button that changes color on hover -->
+  <button id="hoverChangeColorButton" onmouseover="hoverChangeColor()" onmouseout="restoreButtonColor()">Hover to change color</button>
+
+  <!-- Task 9: Button that plays a sound on click -->
+  <button id="playSoundButton" onclick="playButtonClickSound()">Click me to play sound</button>
+
+  <!-- Task 10: Event to alert a message on mouseover -->
+  <div id="mouseOverElement" onmouseover="onMouseOver()">Mouse over me</div>
+
+  <!-- Task 11: Event to hide an element on mouseout -->
+  <div id="mouseOutElement" onmouseout="onMouseOut()">Mouse out of me</div>
+
+  <!-- Task 12: Open and close a new window with custom size -->
+  <a id="openCloseNewWindowLink" href="javascript:void(0);" onclick="openCloseNewWindow()">Open New Window and Close</a>
+
+  <script>
+    // Task 1: Print a message when the user clicks on an element
+    function printMessage() {
+      alert("Element clicked!");
+    }
+
+    // Task 2: Hide an element when the user clicks on a different element
+    function hideElement() {
+      document.getElementById("hiddenElement").style.display = "none";
+    }
+
+    // Task 3: Change link color on hover
+    function changeColor() {
+      document.getElementById("colorChangeLink").style.color = "red";
+    }
+
+    function restoreColor() {
+      document.getElementById("colorChangeLink").style.color = "";
+    }
+
+    // Task 4: Scroll to the top of the page
+    function scrollToTop() {
+      window.scrollTo(0, 0);
+    }
+
+    // Task 5: Play a sound on link click (You can add your own sound)
+    function playSound() {
+      // Replace with code to play a sound
+      alert("Sound played!");
+    }
+
+    // Task 6: Open a new window
+    function openNewWindow() {
+      window.open("https://www.example.com");
+    }
+
+    // Task 7: Simple button that alerts a message
+    function showAlert() {
+      alert("Button clicked!");
+    }
+
+    // Task 8: Button that changes color on hover
+    function hoverChangeColor() {
+      document.getElementById("hoverChangeColorButton").style.backgroundColor = "green";
+    }
+
+    function restoreButtonColor() {
+      document.getElementById("hoverChangeColorButton").style.backgroundColor = "";
+    }
+
+    // Task 9: Button that plays a sound on click
+    function playButtonClickSound() {
+      // Replace with code to play a sound
+      alert("Button click sound played!");
+    }
+
+    // Task 10: Event to alert a message on mouseover
+    function onMouseOver() {
+      alert("Mouse over the element.");
+    }
+
+    // Task 11: Event to hide an element on mouseout
+    function onMouseOut() {
+      document.getElementById("mouseOutElement").style.display = "none";
+    }
+
+    // Task 12: Open and close a new window with custom size
+    function openCloseNewWindow() {
+      const mouseX = window.event.clientX;
+      const mouseY = window.event.clientY;
+      const windowWidth = window.innerWidth;
+      const windowHeight = window.innerHeight;
+      const newWindowWidth = windowWidth - mouseX;
+      const newWindowHeight = windowHeight - mouseY;
+
+      const newWindow = window.open("", "", `width=${newWindowWidth},height=${newWindowHeight}`);
+
+      newWindow.document.write("<p>This is a custom-sized window.</p>");
+      newWindow.document.write("<button onclick=\"window.close();\">Close</button>");
+    }
+  </script>
+</body>
+</html>

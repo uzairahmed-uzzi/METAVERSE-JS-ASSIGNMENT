@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Interactive Elements</title>
+  <style>
+    /* Task 3: Change heading background color on hover */
+    #heading:hover {
+      background-color: black;
+    }
+
+    /* Task 4: Add underline style to paragraph text on hover */
+    p:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <!-- Task 1: Click to turn the sentence bold -->
+  <p id="boldSentence" onclick="makeSentenceBold()">Click me to turn bold</p>
+
+  <!-- Task 2: Make an image disappear on hover and show text instead -->
+  <div id="imageContainer" onmouseover="hideImage()" onmouseout="showImage()">
+    <img src="image.jpg" alt="Image" id="image" style="width: 200px; height: 150px;">
+    <p id="imageText" style="display: none;">This is the text</p>
+  </div>
+
+  <!-- Task 3: Change heading background color on hover -->
+  <h1 id="heading">Hover over me</h1>
+
+  <!-- Task 4: Add underline style to paragraph text on hover -->
+  <p>Hover over this paragraph to add an underline style to text.</p>
+
+  <script>
+    // Task 1: Click to turn the sentence bold
+    function makeSentenceBold() {
+      const sentence = document.getElementById("boldSentence");
+      sentence.style.fontWeight = "bold";
+    }
+
+    // Task 2: Make an image disappear on hover and show text instead
+    function hideImage() {
+      const image = document.getElementById("image");
+      const imageText = document.getElementById("imageText");
+      image.style.display = "none";
+      imageText.style.display = "block";
+    }
+
+    function showImage() {
+      const image = document.getElementById("image");
+      const imageText = document.getElementById("imageText");
+      image.style.display = "block";
+      imageText.style.display = "none";
+    }
+  </script>
+</body>
+</html>
